@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("\nTax calculation\n");
+//        Income tax calculations
+
+        System.out.println("Enter income");
+
+        Scanner sc3= new Scanner(System.in);
+
+        float income = sc3.nextFloat();
+
+        float tax=0.0f;
+        System.out.println("Total income before tax deduction : " + income);
+
+        if(income < 250000.0) {
+            System.out.println("Tax : " + tax);
+            System.out.println("Income after tax slab 0 deduction : " + income);
+        }
+        else{
+            float excessOfBase1 = income - 250000;
+            float slab1TaxPercent=5.0f;
+
+            if (excessOfBase1<250000){
+                tax = tax + excessOfBase1*slab1TaxPercent/100.0f;
+                System.out.println("Tax in slab 1: " + tax);
+                System.out.println("excess of slab 1 : " + excessOfBase1);
+                System.out.println("Final income after slab 1: " + (income - tax));
+
+            }
+            else{
+                tax = tax + 250000*slab1TaxPercent/100.0f;
+                System.out.println("Tax in slab 1: " + tax);
+
+                float excessOfBase2 = income - 500000;
+                float slab2TaxPercent=20.0f;
+
+
+                if (excessOfBase2<500000){
+                    tax = tax + excessOfBase2*slab2TaxPercent/100.0f;
+                    System.out.println("Total Tax in slab 1 and slab2 : " + tax);
+                    System.out.println("excess of slab 2 : " + excessOfBase2);
+                    System.out.println("Final Income : " + (income - tax));
+                 }
+                else{
+
+                    tax = tax + 500000*slab2TaxPercent/100.0f;
+                    System.out.println("Tax in slab1 and slab 2: " + tax);
+
+
+                    float excessOfBase3 = income - 1000000;
+                    float slab3TaxPercent=30.0f;
+
+                    if (excessOfBase3<1000000){
+                        tax = tax + excessOfBase3*slab3TaxPercent/100.0f;
+                        System.out.println("Total Tax in slab 1, slab2 and slab3 : " + tax);
+                        System.out.println("excess of slab 3 : " + excessOfBase3);
+                        System.out.println("Final Income : " + (income - tax));
+                    }
+
+                    else{
+                        tax = tax + 1000000*slab3TaxPercent/100.0f;
+                        System.out.println("Total Tax in slab 1, slab2 and slab3 : " + tax);
+                        System.out.println("Final Income : " + (income - tax));
+                    }
+
+
+
+
+                }
+            }
+        }
+
+
+
+    }
+
+
+}
